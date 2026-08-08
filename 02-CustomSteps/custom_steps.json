@@ -1,0 +1,24 @@
+{
+    "name": "Winstaller Custom Steps Example",
+    "productCode": "WinstallerCustomStepsExample",
+    "publisher": "Winstaller",
+    "installation": {
+        "type": "system",
+        "dir": "test_installation\\%appname%"
+    },
+    "install": [
+        { "type": "MyWelcome" },
+        { "type": "MyLicense" },
+        { "type": "MyInstallType" },
+        { "type": "MyInstall" },
+        { "type": "MySuccess" }
+    ],
+    "uninstall": [
+        { "type": "MyConfirmUninstall" },
+        { "type": "MyUninstall" }
+    ],
+    "plugins": [
+        "Winstaller.CustomSteps/bin/Debug/net472/Winstaller.CustomSteps.dll"
+    ],
+    "version": "1.0.0"
+}

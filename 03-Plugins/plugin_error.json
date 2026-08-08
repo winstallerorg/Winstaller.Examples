@@ -1,0 +1,28 @@
+{
+    "name": "Winstaller Plugins Error Test",
+    "productCode": "WinstallerPluginsErrorTest",
+    "publisher": "Winstaller",
+    "installation": {
+        "type": "system",
+        "dir": "test_installation\\%appname%"
+    },
+    "steps": [
+        { "type": "welcome" },
+        { "type": "license" },
+        { "type": "installtype" },
+        { "type": "install" },
+        { "type": "success" }
+    ],
+    "uninstall": [
+        { "type": "confirmuninstall" },
+        { "type": "uninstall" }
+    ],
+    "scripts": {
+        "preInstall": [ "DemoPreInstallErrorScript" ],
+        "postInstall": [ "DemoPostInstallErrorScript" ]
+    },
+    "plugins": [
+        "Winstaller.Plugins/bin/Debug/net472/Winstaller.Plugins.dll"
+    ],
+    "version": "1.0.0"
+}

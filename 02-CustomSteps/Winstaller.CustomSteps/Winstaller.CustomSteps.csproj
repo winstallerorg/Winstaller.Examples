@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>Winstaller.CustomSteps</RootNamespace>
+    <AssemblyName>Winstaller.CustomSteps</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
+    <ProjectReference Include="..\..\..\winstaller\src\Installer\Winstaller.Interfaces\Winstaller.Interfaces.csproj" Condition="Exists('..\..\..\winstaller\src\Installer\Winstaller.Interfaces\Winstaller.Interfaces.csproj')" />
+  </ItemGroup>
+
+  <ItemGroup Condition="!Exists('..\..\..\winstaller\src\Installer\Winstaller.Interfaces\Winstaller.Interfaces.csproj')">
+    <Reference Include="Winstaller.Interfaces">
+      <HintPath>lib\Winstaller.Interfaces.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,28 @@
+{
+  "name": "My Minimal Application",
+  "productCode": "MyMinimalApp",
+  "publisher": "Minimal Corporation",
+  "version": "1.0.0",
+  "installation": {
+    "type": "local",
+    "dir": "MinimalApp\\%appname%"
+  },
+  "steps": [
+    { "type": "welcome" },
+    { "type": "license" },
+    { "type": "installtype" },
+    { "type": "install" },
+    { "type": "success" }
+  ],
+  "uninstall": [
+    { "type": "confirmuninstall" },
+    { "type": "uninstall" }
+  ],
+  "content": [
+    {
+      "type": "dir",
+      "source": "data",
+      "destination": "%installation%"
+    }
+  ]
+}

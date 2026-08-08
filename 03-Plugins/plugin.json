@@ -1,0 +1,28 @@
+{
+    "name": "Winstaller Plugins Example",
+    "productCode": "WinstallerPluginsExample",
+    "publisher": "Winstaller",
+    "installation": {
+        "type": "system",
+        "dir": "test_installation\\%appname%"
+    },
+    "steps": [
+        { "type": "welcome" },
+        { "type": "license" },
+        { "type": "installtype" },
+        { "type": "install" },
+        { "type": "success" }
+    ],
+    "uninstall": [
+        { "type": "confirmuninstall" },
+        { "type": "uninstall" }
+    ],
+    "scripts": {
+        "preInstall": [ "DemoPreInstallScript" ],
+        "postInstall": [ "DemoPostInstallScript" ]
+    },
+    "plugins": [
+        "Winstaller.Plugins/bin/Debug/net472/Winstaller.Plugins.dll"
+    ],
+    "version": "1.0.0"
+}
