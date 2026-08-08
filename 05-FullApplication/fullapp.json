@@ -1,0 +1,62 @@
+{
+    "name": "Demo Full Application",
+    "productCode": "DemoFullApplication",
+    "publisher": "TechCorp",
+    "version": "1.0.0",
+    "icon": "app.ico",
+    "installation": {
+        "type": "system",
+        "dir": "TechCorp\\%appname%"
+    },
+    "allowedLanguages": ["en"],
+    "availableLanguages": ["en"],
+    "steps": [
+        { "type": "welcome" },
+        { "type": "license" },
+        { "type": "installtype" },
+        { "type": "install" },
+        { "type": "success" }
+    ],
+    "uninstall": [
+        { "type": "confirmuninstall" },
+        { "type": "uninstall" }
+    ],
+    "service": {
+        "name": "DemoAppService",
+        "displayName": "Demo Application Background Service",
+        "description": "Background service writing log entries every second.",
+        "path": "%installation%\\DemoService.exe",
+        "start": "auto",
+        "runAfterInstallation": true,
+        "forceStop": true
+    },
+    "shortcut": {
+        "desktop": {
+            "default": true,
+            "destination": "%installation%\\WpfApp.exe",
+            "name": "Demo Application",
+            "icon": "%installation%\\WpfApp.exe"
+        }
+    },
+    "signing": {
+        "certificatePath": "winstaller-test.pfx",
+        "certificatePassword": "pA$$w0rd",
+        "timestampUrl": "http://timestamp.digicert.com"
+    },
+    "resources": {
+        "license": "license.rtf"
+    },
+    "envPath": "%installation%\\bin",
+    "content": [
+        {
+            "type": "dir",
+            "source": "Solution/WpfApp/bin/Debug/net472",
+            "destination": "%installation%"
+        },
+        {
+            "type": "dir",
+            "source": "Solution/DemoService/bin/Debug/net472",
+            "destination": "%installation%"
+        }
+    ]
+}

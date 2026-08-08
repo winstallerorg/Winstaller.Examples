@@ -1,0 +1,11 @@
+# Winstaller Examples - Windows-only repository
+# Enforce CRLF line endings for all text files
+
+* text eol=crlf
+
+# Binary files - do not touch line endings
+*.png binary
+*.ico binary
+*.pfx binary
+*.dll binary
+*.exe binary

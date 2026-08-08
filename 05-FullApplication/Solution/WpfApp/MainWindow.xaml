@@ -1,0 +1,25 @@
+<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TechCorp Demo Application" Height="400" Width="600"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F7FA" Icon="app.ico">
+    <Grid Margin="30">
+        <Border Background="White" CornerRadius="12" Padding="30">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" Color="#20000000" Direction="270" ShadowDepth="4"/>
+            </Border.Effect>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="🚀" FontSize="48" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+                <TextBlock Text="Welcome to Demo Application" FontSize="22" FontWeight="Bold" Foreground="#1E293B" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                <TextBlock Text="This is a real WPF application installed via Winstaller." FontSize="14" Foreground="#64748B" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                
+                <Border Background="#F1F5F9" CornerRadius="6" Padding="15,10" Margin="0,0,0,25">
+                    <TextBlock Text="Status: Background service 'DemoService' is running and active." FontSize="12" Foreground="#334155" HorizontalAlignment="Center"/>
+                </Border>
+
+                <Button Content="Close Application" Width="160" Height="36" Background="#2563EB" Foreground="White" FontWeight="SemiBold" Click="Button_Click" Cursor="Hand"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
