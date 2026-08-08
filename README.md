@@ -4,7 +4,7 @@ This repository contains a comprehensive suite of example projects and JSON conf
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```text
 Winstaller.Examples/
@@ -36,7 +36,7 @@ Winstaller.Examples/
 
 ---
 
-## 🚀 Examples Overview
+## Examples Overview
 
 ### 1. `01-Minimal` – Minimal Setup Configuration
 * **Directory:** `01-Minimal`
@@ -97,7 +97,7 @@ Winstaller.Examples/
 
 ---
 
-## 🔑 Deep Dive: Code Signing & Self-Signed Certificates (Example 05)
+##  Deep Dive: Code Signing & Self-Signed Certificates (Example 05)
 
 ### Why Code Signing Matters
 Code signing attaches a digital signature to the built installer `.exe` file. This signature accomplishes two critical goals:
@@ -143,7 +143,7 @@ To make Windows trust installers signed with `winstaller-test.pfx` on a developm
 
 ---
 
-## 🛠️ How to Build and Run the Examples
+## How to Build and Run the Examples
 
 ### 1. Building the C# Projects
 All C# projects target `.NET Framework 4.7.2` using SDK-style project files.
