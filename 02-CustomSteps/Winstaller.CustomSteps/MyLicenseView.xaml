@@ -4,20 +4,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:interfaces="clr-namespace:Winstaller.Interfaces;assembly=Winstaller.Interfaces"
+             xmlns:local="clr-namespace:Winstaller.CustomSteps"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="20">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
-        <TextBlock Grid.Row="0" x:Name="HeaderTextBlock" Text="License Agreement (Plugin)" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
-        
-        <RichTextBox Grid.Row="1" x:Name="LicenseRichTextBox" VerticalScrollBarVisibility="Auto" Margin="0,0,0,10" IsReadOnly="True" Visibility="Collapsed"/>
-        <TextBox Grid.Row="1" x:Name="LicenseTextBox" VerticalScrollBarVisibility="Auto" Margin="0,0,0,10" IsReadOnly="True" TextWrapping="Wrap" Visibility="Collapsed" FontFamily="Consolas" FontSize="12"/>
-        
-        <CheckBox Grid.Row="2" x:Name="AcceptCheckBox" Content="I accept the terms in the License Agreement" Checked="AcceptCheckBox_Checked" Unchecked="AcceptCheckBox_Unchecked" IsChecked="False"/>
+
+        <local:TopBannerControl Grid.Row="0"/>
+
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" x:Name="HeaderTextBlock" Text="License Agreement (Plugin)" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+            
+            <RichTextBox Grid.Row="1" x:Name="LicenseRichTextBox" VerticalScrollBarVisibility="Auto" Margin="0,0,0,10" IsReadOnly="True" Visibility="Collapsed"/>
+            <TextBox Grid.Row="1" x:Name="LicenseTextBox" VerticalScrollBarVisibility="Auto" Margin="0,0,0,10" IsReadOnly="True" TextWrapping="Wrap" Visibility="Collapsed" FontFamily="Consolas" FontSize="12"/>
+            
+            <CheckBox Grid.Row="2" x:Name="AcceptCheckBox" Content="I accept the terms in the License Agreement" Checked="AcceptCheckBox_Checked" Unchecked="AcceptCheckBox_Unchecked" IsChecked="False"/>
+        </Grid>
     </Grid>
 </interfaces:StepViewBase>

@@ -4,37 +4,47 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:interfaces="clr-namespace:Winstaller.Interfaces;assembly=Winstaller.Interfaces"
+             xmlns:local="clr-namespace:Winstaller.CustomSteps"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="30">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        <TextBlock Grid.Row="0" x:Name="HeaderTextBlock" Text="Installation Scope (Plugin)" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
-        <TextBlock Grid.Row="1" x:Name="DescriptionTextBlock" Text="Choose how you want to install this application:" FontSize="13" Foreground="Gray" Margin="0,0,0,20"/>
-        
-        <StackPanel Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="550">
-            <RadioButton x:Name="LocalRadioButton" GroupName="Scope" IsChecked="True" Margin="0,0,0,20">
-                <StackPanel Margin="10,0,0,0">
-                    <TextBlock x:Name="LocalLabel" Text="Install for current user only (Local)" FontWeight="SemiBold" FontSize="14"/>
-                    <TextBlock x:Name="LocalDesc" Text="Installs application only into your profile directory. Does not require admin rights." FontSize="11" Foreground="Gray" TextWrapping="Wrap" Margin="0,4,0,0"/>
-                </StackPanel>
-            </RadioButton>
+
+        <local:TopBannerControl Grid.Row="0"/>
+
+        <Grid Grid.Row="1" Margin="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             
-            <RadioButton x:Name="SystemRadioButton" GroupName="Scope" Margin="0,0,0,20">
-                <StackPanel Margin="10,0,0,0">
-                    <TextBlock x:Name="SystemLabel" Text="Install for all users (System)" FontWeight="SemiBold" FontSize="14"/>
-                    <TextBlock x:Name="SystemDesc" Text="Installs application into Program Files. Requires administrator privileges." FontSize="11" Foreground="Gray" TextWrapping="Wrap" Margin="0,4,0,0"/>
-                </StackPanel>
-            </RadioButton>
+            <TextBlock Grid.Row="0" x:Name="HeaderTextBlock" Text="Installation Scope (Plugin)" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+            <TextBlock Grid.Row="1" x:Name="DescriptionTextBlock" Text="Choose how you want to install this application:" FontSize="13" Foreground="Gray" Margin="0,0,0,20"/>
             
-            <Separator Margin="0,10,0,15"/>
-            
-            <TextBlock x:Name="PathLabel" Text="Destination folder:" FontWeight="SemiBold" FontSize="12" Margin="0,0,0,5"/>
-            <TextBlock x:Name="PathPreviewTextBlock" Text="C:\..." FontSize="12" FontFamily="Consolas" Foreground="#333333"/>
-        </StackPanel>
+            <StackPanel Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="550">
+                <RadioButton x:Name="LocalRadioButton" GroupName="Scope" IsChecked="True" Margin="0,0,0,20">
+                    <StackPanel Margin="10,0,0,0">
+                        <TextBlock x:Name="LocalLabel" Text="Install for current user only (Local)" FontWeight="SemiBold" FontSize="14"/>
+                        <TextBlock x:Name="LocalDesc" Text="Installs application only into your profile directory. Does not require admin rights." FontSize="11" Foreground="Gray" TextWrapping="Wrap" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </RadioButton>
+                
+                <RadioButton x:Name="SystemRadioButton" GroupName="Scope" Margin="0,0,0,20">
+                    <StackPanel Margin="10,0,0,0">
+                        <TextBlock x:Name="SystemLabel" Text="Install for all users (System)" FontWeight="SemiBold" FontSize="14"/>
+                        <TextBlock x:Name="SystemDesc" Text="Installs application into Program Files. Requires administrator privileges." FontSize="11" Foreground="Gray" TextWrapping="Wrap" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </RadioButton>
+                
+                <Separator Margin="0,10,0,15"/>
+                
+                <TextBlock x:Name="PathLabel" Text="Destination folder:" FontWeight="SemiBold" FontSize="12" Margin="0,0,0,5"/>
+                <TextBlock x:Name="PathPreviewTextBlock" Text="C:\..." FontSize="12" FontFamily="Consolas" Foreground="#333333"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </interfaces:StepViewBase>

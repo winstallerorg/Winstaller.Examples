@@ -6,6 +6,9 @@
         "type": "system",
         "dir": "test_installation\\%appname%"
     },
+    "resources": {
+        "banner": "assets/banner.png"
+    },
     "install": [
         { "type": "MyWelcome" },
         { "type": "MyLicense" },

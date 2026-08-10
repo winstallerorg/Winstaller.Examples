@@ -4,15 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:interfaces="clr-namespace:Winstaller.Interfaces;assembly=Winstaller.Interfaces"
+             xmlns:local="clr-namespace:Winstaller.CustomSteps"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="30">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        <TextBlock x:Name="HeaderTextBlock" Grid.Row="0" Text="Confirm Uninstallation (Plugin)" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
-        <TextBlock x:Name="MessageTextBlock" Grid.Row="1" TextWrapping="Wrap" FontSize="13" LineHeight="20"/>
+
+        <local:TopBannerControl Grid.Row="0"/>
+
+        <Grid Grid.Row="1" Margin="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock x:Name="HeaderTextBlock" Grid.Row="0" Text="Confirm Uninstallation (Plugin)" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
+            <TextBlock x:Name="MessageTextBlock" Grid.Row="1" TextWrapping="Wrap" FontSize="13" LineHeight="20"/>
+        </Grid>
     </Grid>
 </interfaces:StepViewBase>
