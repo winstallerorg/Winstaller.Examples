@@ -10,14 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Winstaller.Interfaces" Version="0.0.8" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
-    <ProjectReference Include="..\..\..\Winstaller.Interfaces\Winstaller.Interfaces.csproj" Condition="Exists('..\..\..\Winstaller.Interfaces\Winstaller.Interfaces.csproj')" />
-  </ItemGroup>
-
-  <ItemGroup Condition="!Exists('..\..\..\Winstaller.Interfaces\Winstaller.Interfaces.csproj')">
-    <Reference Include="Winstaller.Interfaces">
-      <HintPath>lib\Winstaller.Interfaces.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>
