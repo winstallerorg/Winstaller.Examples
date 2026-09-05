@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Winstaller.Interfaces;
+using Winstaller.Sdk;
 
 namespace Winstaller.CustomSteps
 {
@@ -82,3 +82,4 @@ namespace Winstaller.CustomSteps
         }
     }
 }
+

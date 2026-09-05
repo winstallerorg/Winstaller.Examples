@@ -1,4 +1,4 @@
-using Winstaller.Interfaces;
+using Winstaller.Sdk;
 using System;
 using System.Windows;
 
@@ -43,3 +43,4 @@ namespace Winstaller.CustomSteps
         }
     }
 }
+

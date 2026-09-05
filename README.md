@@ -177,18 +177,40 @@ powershell -ExecutionPolicy Bypass -File 05-FullApplication/install-test-cert.ps
 Once the C# projects are compiled, generate installer executables using the Winstaller CLI:
 
 ```cmd
-# Example 1: Minimal Setup
-winstaller build 01-Minimal/minimal.json
+# Example 1: Minimal Setup (default Windows GUI target)
+winstaller 01-Minimal/minimal.json
 
 # Example 2: Custom Steps
-winstaller build 02-CustomSteps/custom_steps.json
+winstaller 02-CustomSteps/custom_steps.json
 
 # Example 3: Script Plugins
-winstaller build 03-Plugins/plugin.json
+winstaller 03-Plugins/plugin.json
 
 # Example 4: Localization & Translations
-winstaller build 04-Translations/translations.json
+winstaller 04-Translations/translations.json
 
 # Example 5: Production App with Service & Code Signing
-winstaller build 05-FullApplication/fullapp.json
+winstaller 05-FullApplication/fullapp.json
 ```
+
+### 4. Target Templates (`target`: Windows vs Console vs Both)
+
+Winstaller supports building GUI (WPF), CUI (Console), or dual installers:
+* In `config.json`:
+  ```json
+  "target": "windows"   // default: generates [AppName].exe (WPF GUI)
+  "target": "console"   // generates console installer
+  "target": "both"      // generates [AppName].exe and [AppName].console.exe
+  ```
+* Via CLI argument override:
+  ```cmd
+  # Build only the console installer:
+  winstaller 01-Minimal/minimal.json -target=console
+
+  # Build both Windows GUI and Console installers side-by-side:
+  winstaller 01-Minimal/minimal.json -target=both
+  ```
+When running the generated `.console.exe` installer:
+* **Interactive mode:** Displays prompt dialogs (`[Y/n]`), numeric selection menus, and task progress bars directly in the terminal.
+* **Silent mode:** Supports `-silent`, `-y`, `--yes`, `-q`, `--quiet` for non-interactive / CI/CD unattended deployments.
+

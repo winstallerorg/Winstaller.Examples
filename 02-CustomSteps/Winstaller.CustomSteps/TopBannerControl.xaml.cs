@@ -3,7 +3,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using Winstaller.Interfaces;
+using Winstaller.Sdk;
 
 namespace Winstaller.CustomSteps;
 
@@ -71,3 +71,4 @@ public partial class TopBannerControl : UserControl
         return null;
     }
 }
+

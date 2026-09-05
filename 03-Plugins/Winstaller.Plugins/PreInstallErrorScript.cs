@@ -1,5 +1,5 @@
 using System;
-using Winstaller.Interfaces;
+using Winstaller.Sdk;
 
 namespace Winstaller.Plugins
 {
@@ -17,3 +17,4 @@ namespace Winstaller.Plugins
         }
     }
 }
+

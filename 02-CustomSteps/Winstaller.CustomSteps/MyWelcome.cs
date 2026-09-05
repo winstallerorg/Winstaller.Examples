@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Winstaller.Interfaces;
+using Winstaller.Sdk;
 
 namespace Winstaller.CustomSteps
 {
@@ -55,3 +55,4 @@ namespace Winstaller.CustomSteps
         public Task RollbackAsync() => Task.FromResult(0);
     }
 }
+

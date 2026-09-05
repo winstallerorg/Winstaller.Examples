@@ -1,6 +1,6 @@
-using Winstaller.Interfaces;
-using Winstaller.Interfaces.Exceptions;
-using Winstaller.Interfaces.Services;
+using Winstaller.Sdk;
+using Winstaller.Sdk.Exceptions;
+using Winstaller.Sdk.Services;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
@@ -229,3 +229,4 @@ namespace Winstaller.CustomSteps
         }
     }
 }
+
