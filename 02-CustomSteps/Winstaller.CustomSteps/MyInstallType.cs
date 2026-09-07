@@ -4,11 +4,11 @@ using Winstaller.Sdk;
 
 namespace Winstaller.CustomSteps
 {
-    [PluginName("MyInstallType")]
+    [Step("MyInstallType")]
+    [WindowsView(typeof(MyInstallTypeView))]
+    [ConsoleView(typeof(MyInstallTypeConsoleView))]
     public class MyInstallType : IStep, IStepVisibility
     {
-        private MyInstallTypeView? _view;
-
         public InstallerContext Context { get; set; } = null!;
         public int CurrentStep { get; set; }
         public int TotalSteps { get; set; }
@@ -17,40 +17,31 @@ namespace Winstaller.CustomSteps
         public event EventHandler? Next;
         public event EventHandler? Back;
 
+        public bool ShouldShow(InstallerContext context) => true;
+
         public void Initialize(StepConfig config)
         {
         }
 
-        public bool ShouldShow(InstallerContext context)
-        {
-            return !context.IsSilent && !context.IsUpdate;
-        }
-
         public void Start(IView? view)
         {
-            if (view != null)
+            if (Context.IsSilent)
             {
-                view.SetStepView(() =>
-                {
-                    _view = new MyInstallTypeView(this);
-                    return _view;
-                });
+                RaiseNext();
+                return;
             }
+
+            view?.DisplayStep(this);
         }
 
         public void End()
         {
-            _view = null;
         }
 
         public void RaiseNext() => Next?.Invoke(this, EventArgs.Empty);
         public void RaiseBack() => Back?.Invoke(this, EventArgs.Empty);
         public void RaiseCanceled() => Canceled?.Invoke(this, EventArgs.Empty);
 
-        public Task RollbackAsync()
-        {
-            return Task.FromResult(0);
-        }
+        public Task RollbackAsync() => Task.FromResult(0);
     }
 }
-

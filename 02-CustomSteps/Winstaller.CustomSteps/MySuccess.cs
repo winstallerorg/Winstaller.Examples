@@ -1,14 +1,15 @@
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using Winstaller.Sdk;
 
 namespace Winstaller.CustomSteps
 {
-    [PluginName("MySuccess")]
+    [Step("MySuccess")]
+    [WindowsView(typeof(MySuccessView))]
+    [ConsoleView(typeof(MySuccessConsoleView))]
     public class MySuccess : IStep
     {
-        private MySuccessView? _view;
-
         public InstallerContext Context { get; set; } = null!;
         public int CurrentStep { get; set; }
         public int TotalSteps { get; set; }
@@ -23,29 +24,23 @@ namespace Winstaller.CustomSteps
 
         public void Start(IView? view)
         {
-            if (view != null)
+            if (Context.IsSilent)
             {
-                view.SetStepView(() =>
-                {
-                    _view = new MySuccessView(this);
-                    return _view;
-                });
+                RaiseNext();
+                return;
             }
+
+            view?.DisplayStep(this);
         }
 
         public void End()
         {
-            _view = null;
         }
 
         public void RaiseNext() => Next?.Invoke(this, EventArgs.Empty);
         public void RaiseBack() => Back?.Invoke(this, EventArgs.Empty);
         public void RaiseCanceled() => Canceled?.Invoke(this, EventArgs.Empty);
 
-        public Task RollbackAsync()
-        {
-            return Task.FromResult(0);
-        }
+        public Task RollbackAsync() => Task.FromResult(0);
     }
 }
-

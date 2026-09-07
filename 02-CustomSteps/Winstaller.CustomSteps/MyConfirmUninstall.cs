@@ -4,10 +4,11 @@ using Winstaller.Sdk;
 
 namespace Winstaller.CustomSteps
 {
-    [PluginName("MyConfirmUninstall")]
+    [Step("MyConfirmUninstall")]
+    [WindowsView(typeof(MyConfirmUninstallView))]
+    [ConsoleView(typeof(MyConfirmUninstallConsoleView))]
     public class MyConfirmUninstall : IStep
     {
-        private MyConfirmUninstallView? _view;
         private StepConfig? _config;
 
         public InstallerContext Context { get; set; } = null!;
@@ -29,33 +30,21 @@ namespace Winstaller.CustomSteps
         {
             if (Context.IsSilent)
             {
-                Next?.Invoke(this, EventArgs.Empty);
+                RaiseNext();
                 return;
             }
 
-            if (view != null)
-            {
-                view.SetStepView(() =>
-                {
-                    _view = new MyConfirmUninstallView(this);
-                    return _view;
-                });
-            }
+            view?.DisplayStep(this);
         }
 
         public void End()
         {
-            _view = null;
         }
 
         public void RaiseNext() => Next?.Invoke(this, EventArgs.Empty);
         public void RaiseBack() => Back?.Invoke(this, EventArgs.Empty);
         public void RaiseCanceled() => Canceled?.Invoke(this, EventArgs.Empty);
 
-        public Task RollbackAsync()
-        {
-            return Task.FromResult(0);
-        }
+        public Task RollbackAsync() => Task.FromResult(0);
     }
 }
-

@@ -4,10 +4,11 @@ using Winstaller.Sdk;
 
 namespace Winstaller.CustomSteps
 {
-    [PluginName("MyWelcome")]
+    [Step("MyWelcome")]
+    [WindowsView(typeof(MyWelcomeView))]
+    [ConsoleView(typeof(MyWelcomeConsoleView))]
     public class MyWelcome : IStep
     {
-        private MyWelcomeView? _view;
         private StepConfig? _config;
 
         public InstallerContext Context { get; set; } = null!;
@@ -29,23 +30,15 @@ namespace Winstaller.CustomSteps
         {
             if (Context.IsSilent)
             {
-                Next?.Invoke(this, EventArgs.Empty);
+                RaiseNext();
                 return;
             }
 
-            if (view != null)
-            {
-                view.SetStepView(() =>
-                {
-                    _view = new MyWelcomeView(this);
-                    return _view;
-                });
-            }
+            view?.DisplayStep(this);
         }
 
         public void End()
         {
-            _view = null;
         }
 
         public void RaiseNext() => Next?.Invoke(this, EventArgs.Empty);
@@ -55,4 +48,3 @@ namespace Winstaller.CustomSteps
         public Task RollbackAsync() => Task.FromResult(0);
     }
 }
-

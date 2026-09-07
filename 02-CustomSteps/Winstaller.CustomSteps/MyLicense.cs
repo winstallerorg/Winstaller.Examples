@@ -5,11 +5,11 @@ using Winstaller.Sdk;
 
 namespace Winstaller.CustomSteps
 {
-    [PluginName("MyLicense")]
+    [Step("MyLicense")]
+    [WindowsView(typeof(MyLicenseView))]
+    [ConsoleView(typeof(MyLicenseConsoleView))]
     public class MyLicense : IStep
     {
-        private MyLicenseView? _view;
-
         public InstallerContext Context { get; set; } = null!;
         public int CurrentStep { get; set; }
         public int TotalSteps { get; set; }
@@ -26,23 +26,15 @@ namespace Winstaller.CustomSteps
         {
             if (Context.IsSilent)
             {
-                Next?.Invoke(this, EventArgs.Empty);
+                RaiseNext();
                 return;
             }
 
-            if (view != null)
-            {
-                view.SetStepView(() =>
-                {
-                    _view = new MyLicenseView(this);
-                    return _view;
-                });
-            }
+            view?.DisplayStep(this);
         }
 
         public void End()
         {
-            _view = null;
         }
 
         public void RaiseNext() => Next?.Invoke(this, EventArgs.Empty);
@@ -73,4 +65,3 @@ namespace Winstaller.CustomSteps
         }
     }
 }
-

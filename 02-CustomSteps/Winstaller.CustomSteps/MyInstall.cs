@@ -4,11 +4,11 @@ using Winstaller.Sdk;
 
 namespace Winstaller.CustomSteps
 {
-    [PluginName("MyInstall")]
+    [Step("MyInstall")]
+    [WindowsView(typeof(MyInstallView))]
+    [ConsoleView(typeof(MyInstallConsoleView))]
     public class MyInstall : IStep, IBackgroundRunnableStep
     {
-        private MyInstallView? _view;
-
         public InstallerContext Context { get; set; } = null!;
         public int CurrentStep { get; set; }
         public int TotalSteps { get; set; }
@@ -44,19 +44,11 @@ namespace Winstaller.CustomSteps
                 return;
             }
 
-            if (view != null)
-            {
-                view.SetStepView(() =>
-                {
-                    _view = new MyInstallView(this);
-                    return _view;
-                });
-            }
+            view?.DisplayStep(this);
         }
 
         public void End()
         {
-            _view = null;
         }
 
         public void RaiseNext() => Next?.Invoke(this, EventArgs.Empty);
@@ -65,11 +57,10 @@ namespace Winstaller.CustomSteps
         public async Task ExecuteInstallAsync(IProgress<InstallationProgress>? progress)
         {
             var service = Context.GetService<IInstallStep>();
-            if (service == null)
+            if (service != null)
             {
-                throw new InvalidOperationException("IInstallStep service not registered in context");
+                await service.ExecuteInstallAsync(this, progress);
             }
-            await service.ExecuteInstallAsync(this, progress);
         }
 
         public async Task RollbackAsync()
@@ -82,4 +73,3 @@ namespace Winstaller.CustomSteps
         }
     }
 }
-
