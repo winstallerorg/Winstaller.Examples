@@ -22,7 +22,7 @@
         "postInstall": [ "DemoPostInstallErrorScript" ]
     },
     "plugins": [
-        "Winstaller.Plugins/bin/Debug/net472/Winstaller.Plugins.dll"
+        "Winstaller.Plugins/bin/Debug/net45/Winstaller.Plugins.dll"
     ],
     "version": "1.0.0"
 }

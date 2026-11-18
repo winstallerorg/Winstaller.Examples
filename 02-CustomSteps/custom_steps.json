@@ -21,7 +21,7 @@
         { "type": "MyUninstall" }
     ],
     "plugins": [
-        "Winstaller.CustomSteps/bin/Debug/net472/Winstaller.CustomSteps.dll"
+        "Winstaller.CustomSteps/bin/Debug/net45/Winstaller.CustomSteps.dll"
     ],
     "version": "1.0.0"
 }
